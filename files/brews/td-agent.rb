@@ -1,10 +1,10 @@
 require 'formula'
 
 class TdAgent < Formula
-  url 'https://github.com/treasure-data/td-agent.git', :revision => '34a4dfc56fe44b3c14e7b1b234a178feaaeab705'
+  url 'https://github.com/treasure-data/td-agent.git', :revision => 'd41f72c8eedd7c4729e2767a6727b6acb2659193'
   head 'https://github.com/treasure-data/td-agent.git'
   homepage 'https://github.com/treasure-data/td-agent'
-  version '1.1.17'
+  version '1.1.19-1'
 
   option 'fluentd-rev=<revision>', 'Using specify Fluentd revision'
   option 'ruby-ver=<version>', 'Using specify Ruby version listed by ruby-build'
@@ -137,7 +137,7 @@ EOS
   def install_fluentd
     rev = fluentd_rev
     system "git clone https://github.com/fluent/fluentd.git"
-    Dir.chdir("./fluentd") { 
+    Dir.chdir("./fluentd") {
       system "git checkout #{rev}"
       system "#{dest_gem} build fluentd.gemspec"
       system "#{dest_gem} install ./fluentd-*.gem --no-ri --no-rdoc"
